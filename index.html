@@ -1,0 +1,42 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <title>Fincontrollex&reg; Waterfall Chart Studio Online</title>
+        <script src="https://www.gstatic.com/charts/loader.js"></script>
+        <script src="src/core/Data.js"></script>
+        <script src="src/core/Series.js"></script>
+        <script src="src/core/SeriesBuilder.js"></script>
+        <script src="testData.js"></script>
+        <script src="src/googleCharts/WaterfallChart.js"></script>
+        <script src="src/googleCharts/Label.js"></script>
+        <script src="src/googleCharts/DTO.js"></script>
+        <script>
+            window.onload = () => {
+                const options = {
+                    enableInteractivity: false,
+                    title: 'Waterfall Chart',
+                    width: 800,
+                    height: 400,
+                    legend: { position: 'none' },
+                    bar: { groupWidth: '95%' },
+                    baselineColor: 'gray',
+                    series: {1: {enableInteractivity: false}},
+                    isStacked: true,
+                    positiveColor: 'red',
+                    negativeColor: 'green'
+                }
+                google.charts.load('current', {'packages':['corechart']})
+                google.setOnLoadCallback(() => {
+                    const element = document.getElementById('chartView')
+                    const chart = new WaterfallChart(element) 
+                    chart.draw(testData, options)
+                })
+            }
+        </script>
+    </head>
+    <body>
+        <div id="chartView"></div>
+    </body>
+</html>
